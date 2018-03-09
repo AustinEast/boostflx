@@ -1,0 +1,15 @@
+{
+    "name": "boostflx",
+    "url" : "https://github.com/AustinEast/boostflx",
+    "license": "MIT",
+    "tags": ["flixel"],
+    "description": "Haxeflixel booster shot",
+    "version": "0.0.1",
+    "classPath": "source/",
+    "releasenote": "we're new here, please send help",
+    "contributors": ["AustinEast"],
+    "dependencies":
+    {
+      "flixel": "4.3.0"
+    }
+  }
