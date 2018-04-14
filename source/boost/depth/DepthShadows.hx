@@ -24,10 +24,12 @@ class DepthShadows extends FlxTypedGroup<FlxSprite> {
 
         plane = new BSprite();
         plane.setPosition(_x, _y);
+        plane.scrollFactor.set();
         plane.moves = false;
         plane.immovable = true;
         plane.ignoreSprites = true;
         plane.allowCollisions = FlxObject.NONE;
+        plane.ignoreViewAngle = true;
         plane.makeGraphic(Std.int(_width), Std.int(_height), FlxColor.TRANSPARENT, true);
 
         color = _color;
@@ -39,7 +41,8 @@ class DepthShadows extends FlxTypedGroup<FlxSprite> {
 
         for (i in 0...members.length) {
             if (members[i].exists){
-                plane.drawEllipse(members[i].x, members[i].y + members[i].height/2 + 1, members[i].width, members[i].height/2, color);
+                var pos = members[i].getScreenPosition();
+                plane.drawEllipse(pos.x, pos.y - members[i].z - members[i].depth, members[i].width, members[i].height/2, color);
             }
         }
     }

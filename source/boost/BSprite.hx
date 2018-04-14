@@ -14,7 +14,7 @@ import boost.util.Util;
 /**
  *  TODO: Move these into an inline-able class
  */
-class BoostSprite extends FlxSprite
+class BSprite extends FlxSprite
 {
 	public var controller:Controller;
 	public var freeze_timer:Float;

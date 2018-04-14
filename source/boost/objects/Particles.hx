@@ -5,7 +5,6 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.FlxSprite;
 import flixel.math.FlxPoint;
 
-import boost.BState;
 import boost.BSprite;
 import boost.util.Util;
 
