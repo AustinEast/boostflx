@@ -109,6 +109,11 @@ class BSprite extends FlxSprite
 		return FlxPoint.get(x + width * 0.5, y + height);
 	}
 
+	public function anchor_origin():Void 
+	{
+		origin.set(frameWidth * 0.5, frameHeight);
+	}
+
 	/*function stop_jitter(_side:Int = FlxObject.Floor, _velocityThreshold:Float = 10) {
         if (this.isTouching(_side)) {
 			if (_side == FlxObject.FLOOR || _side == FlxObject.CEILING)
