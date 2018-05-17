@@ -123,24 +123,24 @@ class BSprite extends FlxSprite
         }
     } */  
 
-	public function move_x_toward(_target:Float, _speed:Float = 5):Void {
-        if (x >= _target) velocity.x -= _speed;
-		else if (  x < _target) velocity.x += _speed;
+	public function move_x_toward(_target:Float, _speed:Float = 5, _threshold:Float = 0):Void {
+        if (x >= _target + _threshold) velocity.x -= _speed;
+		else if (x < _target - _threshold) velocity.x += _speed;
     }
 
-	public function move_y_toward(_target:Float, _speed:Float = 5):Void {
-        if (y >= _target) velocity.y -= _speed;
-        else if (  y < _target) velocity.y += _speed;
+	public function move_y_toward(_target:Float, _speed:Float = 5, _threshold:Float = 0):Void {
+        if (y >= _target + _threshold) velocity.y -= _speed;
+        else if (y < _target - _threshold) velocity.y += _speed;
     }
 
-	public function accel_x_toward(_target:Float, _speed:Float = 5):Void {
-        if (x >= _target) acceleration.x -= _speed;
-		else if (  x < _target) acceleration.x += _speed;
+	public function accel_x_toward(_target:Float, _speed:Float = 5, _threshold:Float = 0):Void {
+        if (x >= _target + _threshold) acceleration.x -= _speed;
+		else if (  x < _target - _threshold) acceleration.x += _speed;
     }
 
-	public function accel_y_toward(_target:Float, _speed:Float = 5):Void {
-        if (y >= _target) acceleration.y -= _speed;
-        else if (  y < _target) acceleration.y += _speed;
+	public function accel_y_toward(_target:Float, _speed:Float = 5, _threshold:Float = 0):Void {
+        if (y >= _target + _threshold) acceleration.y -= _speed;
+        else if (  y < _target - _threshold) acceleration.y += _speed;
     }
 
 	override public function update(elapsed:Float):Void 
