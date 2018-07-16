@@ -2,8 +2,8 @@
 <project>
 	
 	<!-- APP ---->
-	<app title="boostflx" file="boostflx" main="Main" version="0.1.0" company="none" />
-	<app preloader="flixel.system.FlxBasePreloader"/>
+	<!-- <app title="boostflx" file="boostflx" main="Main" version="0.1.0" company="none" /> -->
+	<!-- <app preloader="flixel.system.FlxBasePreloader"/> -->
 	
 	<!-- WINDOW SETTINGS- --->
 	<!--These window settings apply to all targets-->
