@@ -11,6 +11,10 @@ import boost.BSprite;
 
 using flixel.util.FlxSpriteUtil;
 
+/**
+ *  Creates a plane that draws a "Shadow" for each target. 
+ *  Not very useful and the ShadowManger class is recommended instead.
+ */
 class DepthShadows extends FlxTypedGroup<FlxSprite> {
 
     public var plane:BSprite;
@@ -39,7 +43,7 @@ class DepthShadows extends FlxTypedGroup<FlxSprite> {
 
         for (i in 0...members.length) {
             if (members[i].exists){
-                plane.drawEllipse(members[i].x, members[i].y + members[i].height/2 + 1, members[i].width, members[i].height/2, color);
+                plane.drawCircle(members[i].x + members[i].width/2, members[i].y + members[i].height/2 + 1, members[i].width/2, color);
             }
         }
     }

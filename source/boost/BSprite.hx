@@ -27,9 +27,9 @@ class BSprite extends FlxSprite
 	var flash_colors:Array<FlxColor>;
 	var offset_ref:FlxPoint;
 	
-    public function new(?_flash_colors:Array<FlxColor>)
+    public function new(X:Float = 0, Y:Float = 0, ?_flash_colors:Array<FlxColor>)
     {
-    	super();
+    	super(X, Y);
 
 		// Init Vars
 		if (_flash_colors == null) _flash_colors = [FlxColor.WHITE];
@@ -143,8 +143,7 @@ class BSprite extends FlxSprite
         else if (  y < _target - _threshold) acceleration.y += _speed;
     }
 
-	override public function update(elapsed:Float):Void 
-	{
+	override public function update(elapsed:Float):Void {
 		if (freeze_timer > 0) freeze_timer -= elapsed;
 
 		else {
@@ -157,5 +156,5 @@ class BSprite extends FlxSprite
 			}
 		}
 	}	
-	
+
 }
