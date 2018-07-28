@@ -90,7 +90,8 @@ class Shadow extends FlxSprite
 			
             if (matchTargetAngle) angle = target.angle;
             if (matchTargetFrame) animation.frameIndex = target.animation.frameIndex;
-		} else exists = false;
+            visible = target.visible;
+		} else kill();
 		super.update(elapsed);
     }
 }

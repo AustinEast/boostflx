@@ -30,10 +30,11 @@ class Particles extends FlxTypedGroup<Particle>
 		//	add(new Particle(colors[Util.randomRangeInt(0, colors.length - 1)]));
     }
 	
-	public function fire(_p:FlxPoint, _v:FlxPoint, ?_anim:String, ?_midpoint:Bool = false):Void
+	public function fire(_p:FlxPoint, _v:FlxPoint, ?_anim:String, ?_midpoint:Bool = false):Null<Particle>
 	{
 		if (getFirstAvailable() != null)
-			getFirstAvailable().fire(_p, _v, _anim, _midpoint);
+			return getFirstAvailable().fire(_p, _v, _anim, _midpoint);
+		else return null;
 	}
 	
 }
@@ -48,12 +49,13 @@ class Particle extends BSprite
 		color = _color;
 	}
 	
-	public function fire(_p:FlxPoint, _v:FlxPoint, ?_anim:String, ?_midpoint:Bool = false):Void
+	public function fire(_p:FlxPoint, _v:FlxPoint, ?_anim:String, ?_midpoint:Bool = false):Particle
 	{
         if (_midpoint) reset(_p.x - width/2, _p.y - height/2);
         else reset(_p.x, _p.y);
 		velocity.set(_v.x, _v.y);
         if (_anim != null)
 		    animation.play(_anim);
+		return this;
 	}
 }

@@ -41,14 +41,14 @@ class BSprite extends FlxSprite
 		offset_ref = FlxPoint.get();
 	}
 
-	override public function graphicLoaded()
-	{
-		for (i in 0...flash_colors.length) {
-			flash_bitmaps[i] = graphic.bitmap.clone();
-			fillWithColour(flash_bitmaps[i], flash_colors[i]);
-		}
-		base_bitmap = graphic.bitmap;
-	}
+	// override public function graphicLoaded()
+	// {
+	// 	for (i in 0...flash_colors.length) {
+	// 		flash_bitmaps[i] = graphic.bitmap.clone();
+	// 		fillWithColour(flash_bitmaps[i], flash_colors[i]);
+	// 	}
+	// 	base_bitmap = graphic.bitmap;
+	// }
 
 	private function fillWithColour(bitmap_data:BitmapData, colour:UInt)
 	{
@@ -62,16 +62,16 @@ class BSprite extends FlxSprite
 	public function flash(duration:Float = 0.1, color_index:Int = 0)
 	{	
 
-		graphic.bitmap = flash_bitmaps[color_index];
-		var old_alpha:Float = alpha;
-		alpha = 1;
-		dirty = true;
+		// graphic.bitmap = flash_bitmaps[color_index];
+		// var old_alpha:Float = alpha;
+		// alpha = 1;
+		// dirty = true;
 		
-		new FlxTimer().start(duration, function(timer:FlxTimer) {			
-			graphic.bitmap = base_bitmap;
-			alpha = old_alpha;
-			dirty = true;
-		});		
+		// new FlxTimer().start(duration, function(timer:FlxTimer) {			
+		// 	graphic.bitmap = base_bitmap;
+		// 	alpha = old_alpha;
+		// 	dirty = true;
+		// });		
 	}
 
 	public function freeze(_duration:Float = 0.1, _force_restart:Bool = true) 
