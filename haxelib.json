@@ -7,5 +7,8 @@
     "version": "0.0.1",
     "classPath": "source/",
     "releasenote": "we're new here, please send help",
-    "contributors": ["AustinEast"]
+    "contributors": ["AustinEast"],
+    "dependencies": {
+      "flixel": ""
+    }
   }

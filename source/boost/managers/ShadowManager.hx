@@ -24,8 +24,8 @@ class ShadowManager extends FlxTypedGroup<Shadow>
 
     public function activate(target:FlxSprite, img:String, img_width:Int, img_height:Int, frame:Int = 0):Shadow
     {
-        if (getFirstOpen() != null) return getFirstOpen().activate(target, img, img_width, frame);
-        else return add(new Shadow().activate(target, img, img_width, img_height, frame));
+        if (getFirstOpen() != null) return getFirstOpen().activate(target, img, img_width, img_height, frame);
+        else return add(new Shadow(target.x, target.y).activate(target, img, img_width, img_height, frame));
     }
 
     /**
@@ -63,28 +63,30 @@ class Shadow extends FlxSprite
     public var matchTargetFrame:Bool = false;
     public var unique:Bool = false;
 
-    public function new():Void
+    public function new(?X:Float, ?Y:Float):Void
     {
-        super();
+        super(X, Y);
         allowCollisions = FlxObject.NONE;
         ignoreSprites = true;
+        targetOffset = FlxPoint.get();
         kill();
     }
 
     public function activate(target:FlxSprite, img:String, img_width:Int, img_height:Int, frame:Int = 0, unique = false):Shadow {
-        reset(target.x, target.y);
         this.target = target;
         this.unique = unique;
 		loadGraphic(img, true, img_width, img_height);
 		animation.frameIndex = frame;
 		offset.set(img_width/2, img_height/2);
-        targetOffset = FlxPoint.get();
+        targetOffset.set();
+        var pos = target.getMidpoint();
+        reset(pos.x, pos.y);
         
         return this;
     }
 
     override public function update(elapsed:Float):Void {
-        if (target != null) {
+        if (target != null && target.exists) {
 			var pos = target.getMidpoint();
 			setPosition(pos.x + (targetOffset.x * (target.flipX ? -1 : 1)), pos.y + (targetOffset.y * (target.flipY ? -1 : 1)));
 			

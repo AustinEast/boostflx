@@ -62,6 +62,19 @@ class DepthUtil {
 		// TODO: MAKE THIS ACTUALLY SORT BY Z LMAO
 		return FlxSort.byY(Order, Obj1, Obj2);
 	}
+
+	public static function sortByRotY(o:Int, o1:FlxObject, o2:FlxObject):Int {
+		if (o1.ignoreSprites && o2.ignoreSprites) return 0;
+		if (o1.ignoreSprites && o2.flixelType == OBJECT) return -1;
+		if (o2.ignoreSprites && o1.flixelType == OBJECT) return 1;
+		if (!o1.active || !o2.active) return 0;
+		
+		var oh = o1.get_d();
+		var ah = o2.get_d();
+
+		if (oh == ah) return o1.z < o2.z ? 1 : -1;
+		return oh > ah ? 1 : -1;
+	}
 	/**
 	 *  An attempt at a topographical sort function, only on object that are colliding to save on resources.
 	 */
