@@ -1,4 +1,4 @@
-package boost;
+package boost.effects;
 
 import flixel.FlxG;
 import flixel.tweens.FlxTween;

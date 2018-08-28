@@ -13,27 +13,27 @@ class Particles extends FlxTypedGroup<Particle>
 
     public var colors:Array<Int>;
 	
-	public function new(?_colors:Array<Int>)
+	public function new(?colors:Array<Int>)
 	{
 		super();
 
 		exists = false;
 		
-        if (_colors == null) _colors = [0xffffff];
-        colors = _colors;
+        if (colors == null) colors = [0xffffff];
+        this.colors = colors;
 	}
 
-    public function add_amount(_amt:Int) {
+    public function add_amount(amt:Int) {
         // Extend this function to create your particle like so:
         
-        //for (i in 0..._amt)
+        //for (i in 0...amt)
 		//	add(new Particle(colors[Util.randomRangeInt(0, colors.length - 1)]));
     }
 	
-	public function fire(_p:FlxPoint, _v:FlxPoint, ?_anim:String, ?_midpoint:Bool = false):Null<Particle>
+	public function fire(p:FlxPoint, v:FlxPoint, ?anim:String, ?midpoint:Bool = false):Null<Particle>
 	{
 		if (getFirstAvailable() != null)
-			return getFirstAvailable().fire(_p, _v, _anim, _midpoint);
+			return getFirstAvailable().fire(p, v, anim, midpoint);
 		else return null;
 	}
 	
@@ -42,20 +42,20 @@ class Particles extends FlxTypedGroup<Particle>
 class Particle extends BSprite
 {
 	
-	public function new(_color:Int)
+	public function new(color:Int)
 	{
 		super();
 		exists = false;
-		color = _color;
+		this.color = color;
 	}
 	
-	public function fire(_p:FlxPoint, _v:FlxPoint, ?_anim:String, ?_midpoint:Bool = false):Particle
+	public function fire(p:FlxPoint, v:FlxPoint, ?anim:String, ?midpoint:Bool = false):Particle
 	{
-        if (_midpoint) reset(_p.x - width/2, _p.y - height/2);
-        else reset(_p.x, _p.y);
-		velocity.set(_v.x, _v.y);
-        if (_anim != null)
-		    animation.play(_anim);
+        if (midpoint) reset(p.x - width/2, p.y - height/2);
+        else reset(p.x, p.y);
+		velocity.set(v.x, v.y);
+        if (anim != null)
+		    animation.play(anim);
 		return this;
 	}
 }

@@ -9,7 +9,7 @@ import boost.managers.ControlsManager;
 import boost.BSprite;
 import boost.BState;
 
-class ETiledLevel extends TiledLevel
+class ETiledLoader extends TiledLoader
 {
     override private function loadObject(state:BState, o:TiledObject, g:TiledObjectLayer, group:FlxGroup)
 	{

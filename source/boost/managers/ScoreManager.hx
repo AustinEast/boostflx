@@ -1,13 +1,13 @@
 package boost.managers;
 
-import flixel.FlxObject;
+import flixel.FlxBasic;
 
 /**
  * Stores numeric totals and provides helper functions to manipulate the totals.
  * Use `setScore` and `getScore` to add some safety checks to your scoring systems.
  */
 
-class ScoreManager extends FlxObject {
+class ScoreManager extends FlxBasic {
 
     public function new() 
 	{
@@ -55,23 +55,23 @@ class ScoreManager extends FlxObject {
 		}
 	}
 
-	public static function setScore(_slot:Int, _score:Int, _concat:Bool = false, _overwriteCanUpdate:Bool = false):Void
+	public static function setScore(slot:Int, score:Int, concat:Bool = false, overwriteCanUpdate:Bool = false):Void
 	{
-		if (canUpdateScores || _overwriteCanUpdate)
+		if (canUpdateScores || overwriteCanUpdate)
 		{
-			if (_concat) {
-				scores[_slot] += _score;
+			if (concat) {
+				scores[slot] += score;
 			}
 			else 
 			{
-				scores[_slot] = _score;
+				scores[slot] = score;
 			}
 		} 
 	}
 
-	public static function generateScores(n:Int, _clearScores:Bool = false):Void
+	public static function generateScores(n:Int, clear:Bool = false):Void
 	{
-		if (_clearScores) {
+		if (clear) {
 			clearScores();
 		}
 

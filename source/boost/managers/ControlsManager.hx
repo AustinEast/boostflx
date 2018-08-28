@@ -52,12 +52,12 @@ class ControlsManager extends FlxBasic
 
 	public var acceptDeactiveControllerInput:Bool;
 	
-	public function new(_acceptDeactiveControllerInput:Bool = true, _allControllersActive:Bool = false) 
+	public function new(acceptDeactiveControllerInput:Bool = true, allControllersActive:Bool = false) 
 	{
 		super();
 
-    	setAllActiveControllers(_allControllersActive);
-		acceptDeactiveControllerInput = _acceptDeactiveControllerInput;
+    	setAllActiveControllers(allControllersActive);
+		acceptDeactiveControllerInput = acceptDeactiveControllerInput;
 	}
 	
 	public function justPressed(BUTTON:Button, CONTROLLER:Controller):Bool
@@ -184,7 +184,7 @@ class ControlsManager extends FlxBasic
 		return 0;
 	}
 
-		public function intToController(INT:Int):Controller
+	public function intToController(INT:Int):Controller
 	{
 		switch(INT)
 		{
@@ -202,9 +202,9 @@ class ControlsManager extends FlxBasic
 		return FlxG.gamepads.getByID(controllerToInt(CONTROLLER));
 	}
 
-	public function setAllActiveControllers(_allControllersActive:Bool):Void
+	public function setAllActiveControllers(allControllersActive:Bool):Void
     {
-		activeControllers = [for (i in 0...MAX_CONTROLLERS) _allControllersActive];
+		activeControllers = [for (i in 0...MAX_CONTROLLERS) allControllersActive];
     }
 
     public function addActiveController(CONTROLLER:Controller):Void

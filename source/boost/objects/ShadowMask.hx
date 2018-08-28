@@ -1,4 +1,4 @@
-package boost.depth;
+package boost.objects;
 
 import flixel.math.FlxPoint;
 import flixel.FlxG;
@@ -15,26 +15,26 @@ using flixel.util.FlxSpriteUtil;
  *  Creates a plane that draws a "Shadow" for each target. 
  *  Not very useful and the ShadowManger class is recommended instead.
  */
-class DepthShadows extends FlxTypedGroup<FlxSprite> {
+class ShadowMask extends FlxTypedGroup<FlxSprite> {
 
     public var plane:BSprite;
     public var color:Int;
 
-    public function new(_x:Float, _y:Float, _width:Float, _height:Float, _color:Int = 0xFF000000)
+    public function new(x:Float, y:Float, width:Float, height:Float, color:Int = 0xFF000000)
 	{
 		super();
 
         visible = false;
 
         plane = new BSprite();
-        plane.setPosition(_x, _y);
+        plane.setPosition(x, y);
         plane.moves = false;
         plane.immovable = true;
         plane.ignoreSprites = true;
         plane.allowCollisions = FlxObject.NONE;
-        plane.makeGraphic(Std.int(_width), Std.int(_height), FlxColor.TRANSPARENT, true);
+        plane.makeGraphic(Std.int(width), Std.int(height), FlxColor.TRANSPARENT, true);
 
-        color = _color;
+        this.color = color;
     }
 
     override public function update(elapsed:Float) {

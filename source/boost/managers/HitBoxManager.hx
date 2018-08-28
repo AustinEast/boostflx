@@ -22,14 +22,14 @@ class HitBoxManager extends FlxTypedGroup<HitBox>
         }
 	}
 
-    public function activate(_x:Float, _y:Float, _width:Int, height:Int, _parent:Dynamic, _variable:String="", _removeIfTrue:Bool = true)
+    public function activate(x:Float, y:Float, width:Int, height:Int, parent:Dynamic, variable:String="", removeIfTrue:Bool = true)
     {
-        if (getFirstOpen() != null) getFirstOpen().activate(_x, _y, _width, height, _parent, _variable, _removeIfTrue);
+        if (getFirstOpen() != null) getFirstOpen().activate(x, y, width, height, parent, variable, removeIfTrue);
         else
         {
             var hitbox = new HitBox();
             add(hitbox);
-            hitbox.activate(_x, _y, _width, height, _parent, _variable);
+            hitbox.activate(x, y, width, height, parent, variable);
         }
     }
 
@@ -80,21 +80,21 @@ class HitBox extends FlxObject
         kill();
     }
 
-    public function activate(_x:Float, _y:Float, _width:Int, _height:Int, _parent:Dynamic, _variable:String="", _removeIfTrue=true):Void
+    public function activate(x:Float, y:Float, width:Int, height:Int, parent:Dynamic, variable:String="", removeIfTrue=true):Void
     {
         fixedPosition = true;
 
-        width = _width;
-        height = _height;
-        parent = _parent;
-        parentVariable = _variable;
-        reset(_x,_y);
+        this.width = width;
+        this.height = height;
+        this.parent = parent;
+        this.parentVariable = variable;
+        reset(x,y);
     }
 
-    public function reActivate(_x:Float, _y:Float):Void
+    public function reActivate(x:Float, y:Float):Void
     {
         if (!fixedPosition) reset(x, y);
-        else reset(_x, _y);
+        else reset(x, y);
     }
 
     override public function update(elapsed:Float):Void {

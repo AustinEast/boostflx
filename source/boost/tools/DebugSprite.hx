@@ -1,4 +1,4 @@
-package boost.util;
+package boost.tools;
 
 import flixel.FlxG;
 import flixel.FlxSprite;

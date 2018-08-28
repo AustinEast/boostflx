@@ -1,4 +1,4 @@
-package boost.tile;
+package boost.loaders;
 
 import flixel.FlxG;
 import flixel.FlxBasic;
@@ -20,14 +20,14 @@ import flixel.addons.tile.FlxTilemapExt;
 import flixel.addons.tile.FlxTileSpecial;
 import haxe.io.Path;
 
-import boost.BState;
+import boost.State;
 
 /**
 * ...
 * @author Samuel Batista - original author
 * @author austineast - edits
 **/
-class TiledLevel extends TiledMap
+class TiledLoader extends TiledMap
 {
 	// For each "Tile Layer" in the map, you must define a "tileset" property which contains the name of a tile sheet image 
 	// used to draw tiles in that layer (without file extension). The image file must be located in the directory specified bellow.
@@ -42,7 +42,7 @@ class TiledLevel extends TiledMap
 	public var imagesLayer:FlxGroup;
 	public var objectsLayer:FlxGroup;
 	
-	public function new(tiledLevel:Dynamic, state:BState)
+	public function new(tiledLevel:Dynamic, state:State)
 	{
 		super(tiledLevel);
 		
@@ -142,7 +142,7 @@ class TiledLevel extends TiledMap
 		return special;
 	}
 	
-	public function loadObjects(state:BState)
+	public function loadObjects(state:State)
 	{
 		var layer:TiledObjectLayer;
 
@@ -210,7 +210,7 @@ class TiledLevel extends TiledMap
     /**
     * Override this to add in your own objects. There is an example of this in the examples directory.
     **/
-	private function loadObject(state:BState, o:TiledObject, g:TiledObjectLayer, group:FlxGroup)
+	private function loadObject(state:State, o:TiledObject, g:TiledObjectLayer, group:FlxGroup)
 	{
 
 	}
