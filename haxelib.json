@@ -9,6 +9,7 @@
     "releasenote": "we're new here, please send help",
     "contributors": ["AustinEast"],
     "dependencies": {
-      "flixel": ""
+      "flixel": "",
+      "flixel-addons": ""
     }
   }

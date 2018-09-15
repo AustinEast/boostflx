@@ -1,5 +1,3 @@
 package boost.loaders;
 
-class LevelLoader {
-    
-}
+class LevelLoader {}
