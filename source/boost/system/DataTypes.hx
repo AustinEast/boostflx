@@ -1,5 +1,7 @@
 package boost.system;
 
+import flixel.system.FlxAssets.FlxGraphicAsset;
+
 typedef EntityData = {
 	name:String,
 	entityClass:String,
@@ -32,7 +34,7 @@ typedef SizeData = {
 }
 
 typedef GraphicData = {
-	asset:String,
+	asset:FlxGraphicAsset,
 	animated:Bool,
 	billboard:Bool,
 	width:Int,

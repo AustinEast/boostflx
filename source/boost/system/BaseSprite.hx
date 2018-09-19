@@ -13,7 +13,10 @@ class BaseSprite extends FlxNestedSprite {
 	 */
 	// public var billboard:Bool;
 	override public function update(elapsed:Float):Void {
+		// TODO: add in a "relative angle" so billboarded sprites can still rotate. Maybe use rotation?
 		if (billboard)
 			angle = -camera.angle;
+
+		super.update(elapsed);
 	}
 }

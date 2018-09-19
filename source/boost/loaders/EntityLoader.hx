@@ -1,7 +1,32 @@
 package boost.loaders;
 
+import boost.system.Macros;
+
 class EntityLoader {
-	public static function get_class() {}
+	/**
+	 * Loads a new Dynamic Class by name, as defined in EntityData's `entityClass` value
+	 * Class cannot have any constructor arguments
+	 * @param da
+	 * @param n
+	 * @return <Dynamic>
+	 */
+	public static function load_new_from_name(da:Array<EntityData>, n:String):Dynamic {
+		for (d in da)
+			if (n == d.name)
+				return load_new(d);
+		return null;
+	}
+
+	/**
+	 * Loads a new Dynamic Class by name, as defined in EntityData's `entityClass` value
+	 * Class cannot have any constructor arguments
+	 * @param da
+	 * @param n
+	 * @return <Dynamic>
+	 */
+	public static function load_new(e:EntityData):Dynamic {
+		return Type.createInstance(Type.resolveClass(e.entityClass), []).load_from_data(e);
+	}
 
 	public static function load_from_name(e:Entity, da:Array<EntityData>, n:String):Null<Entity> {
 		for (d in da)
@@ -11,20 +36,21 @@ class EntityLoader {
 	}
 
 	public static function load_from_data(e:Entity, d:EntityData):Entity {
-		reset(e);
-		set_stats(e, d.stats);
-		set_graphic(e, d.graphic);
-		set_size(e, d.size);
-		set_animations(e, d.animations);
+		reset_ext(e);
+		load_stats(e, d.stats);
+		load_graphic(e, d.graphic);
+		load_size(e, d.size);
+		if (d.animations != null)
+			load_animations(e, d.animations);
 
 		// Apply custom data, if any.
-		if (e.set_custom != null)
-			e.set_custom(d.custom);
+		if (e.load_custom != null)
+			e.load_custom(d.custom);
 
 		return e;
 	}
 
-	public static function reset(e:Entity):Entity {
+	public static function reset_ext(e:Entity):Entity {
 		if (e.children.length > 0) {
 			for (i in 0...e.children.length) {
 				e.children[i].kill();
@@ -34,7 +60,7 @@ class EntityLoader {
 		return e;
 	}
 
-	public static function set_stats(e:Entity, d:StatsData):Entity {
+	public static function load_stats(e:Entity, d:StatsData):Entity {
 		e.speed.set(d.speed.x, d.speed.y, d.speed.z);
 		e.acceleration.set(d.gravity.x, d.gravity.y);
 		e.accelerationZ = d.gravity.z;
@@ -48,7 +74,7 @@ class EntityLoader {
 		return e;
 	}
 
-	public static function set_graphic(e:Entity, d:GraphicData):Entity {
+	public static function load_graphic(e:Entity, d:GraphicData):Entity {
 		if (d.sliced)
 			e.loadSlices(d.asset, d.slices, d.width, d.height, d.sliceOffset);
 		else
@@ -57,7 +83,7 @@ class EntityLoader {
 		return e;
 	}
 
-	public static function set_size(e:Entity, d:SizeData):Entity {
+	public static function load_size(e:Entity, d:SizeData):Entity {
 		e.setSize(d.width, d.height);
 		e.depth = d.depth;
 		e.offset.set(d.offset.x, d.offset.y);
@@ -71,7 +97,7 @@ class EntityLoader {
 		return e;
 	}
 
-	public static function set_animations(e:Entity, d:Array<AnimationData>) {
+	public static function load_animations(e:Entity, d:Array<AnimationData>) {
 		for (a in d)
 			e.animation.add(a.name, a.frames, a.speed, a.loop);
 	}

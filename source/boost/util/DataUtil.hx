@@ -24,7 +24,7 @@ class DataUtil {
 
 	public static inline function new_graphic():GraphicData {
 		return {
-			asset: "assets/pathto/image.png",
+			asset: "assets/images/image.png",
 			animated: false,
 			billboard: false,
 			width: 16,
@@ -74,7 +74,7 @@ class DataUtil {
 		return {
 			width: 16,
 			height: 16,
-			depth: 16,
+			depth: 0,
 			offset: Vector3.get(),
 			origin: {
 				x: 0,

@@ -27,7 +27,7 @@ class Entity extends BaseSprite {
 	 * A callback to apply custom EntityData.
 	 * Called during the EntityLoader's `load_from_data()` function
 	 */
-	public var set_custom:Dynamic->Void = null;
+	public var load_custom:Dynamic->Void = null;
 
 	/**
 	 * TODO
@@ -48,7 +48,7 @@ class Entity extends BaseSprite {
 
 	var offset_ref:FlxPoint;
 
-	public function new(X:Float = 0, Y:Float = 0, ?flash_colors:Array<FlxColor>) {
+	public function new(X:Float = 0, Y:Float = 0) {
 		super(X, Y);
 
 		// Init Vars
@@ -164,6 +164,8 @@ class Entity extends BaseSprite {
 			s.reset(x, y);
 		} else
 			s = new BaseSprite(x, y);
+		s.offset = this.offset;
+		s.origin = this.origin;
 		s.relativeZ = -z * offset;
 		s.z = this.z + s.relativeZ;
 		s.solid = false;
