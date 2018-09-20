@@ -1,7 +1,5 @@
 package boost.loaders;
 
-import boost.system.Macros;
-
 class EntityLoader {
 	/**
 	 * Loads a new Dynamic Class by name, as defined in EntityData's `entityClass` value
